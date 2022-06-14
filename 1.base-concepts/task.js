@@ -12,15 +12,15 @@ function solveEquation(a, b, c) {
     let x = -b / (2 * a);
     arr = [x];
   } else if ( discr > 0) {
-    let x1 = (-b + Math.sqrt(d) ) / (2 * a);
-    let x2 = (-b - Math.sqrt(d) ) / (2 * a);
+    let x1 = (-b + Math.sqrt(discr) ) / (2 * a);
+    let x2 = (-b - Math.sqrt(discr) ) / (2 * a);
     arr = [x1, x2];
 
 
   }
 
 
-  return arr; // array
+  return arr;
 }
 
 
