@@ -1,5 +1,5 @@
 class AlarmClock {
-    constructor(alarmCollection, timerId) {
+    constructor() {
         this.alarmCollection = [];
         this.timerId = null; 
     }
@@ -10,7 +10,7 @@ class AlarmClock {
         } else if(this.alarmCollection.some((element) => element.idCall === idCall)){
             return console.error("Call is already existed");
         }  
-        return this.alarmCollection.push({idCall, time, funcCallBack})
+        return this.alarmCollection.push({idCall, time, funcCallBack});
 
     }
 
@@ -30,19 +30,23 @@ class AlarmClock {
 
     start() {
         
-        if (this.timerId !== null){
-            return;
-        }
         function checkClock(clock) {
-            if(clock.time == this.getCurrentFormattedTime()){
-                return clock.funcCallBack;
+            if(clock.time === this.getCurrentFormattedTime()){
+                return clock.funcCallBack();
             }
         }
+            if(this.timerId === null){
+                this.timerId = setInterval(() => {
+                    this.alarmCollection.forEach(clock => checkClock(clock));
+                }, 1000);
+            }
+
+            return;
     
     } 
 
     stop() {
-        if(this.timerId){
+        if(this.timerId !== null){
             clearInterval(this.timerId)
             this.timerId = null;
         }
