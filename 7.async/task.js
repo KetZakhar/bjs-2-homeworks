@@ -14,9 +14,9 @@ class AlarmClock {
 
     }
 
-    removeClock(idCallDel) {
+    removeClock(idCall) {
         let results = this.alarmCollection.length;
-        this.alarmCollection = this.alarmCollection.filter((id) => id.idCallDel !== idCallDel);
+        this.alarmCollection = this.alarmCollection.filter((id) => id.idCall !== idCall);
         return !(results === this.alarmCollection.length);
 
     }
